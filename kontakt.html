@@ -1,0 +1,75 @@
+<?php 
+if(isset($_POST['submit'])){
+    $to = "j.tosic96@gmail.com";
+    $from = $_POST['email'];
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $subject = "Form submission";
+    $subject2 = "Copy of your form submission";
+    $message = $first_name . " " . $last_name . " napisao je sljedeće:" . "\n\n" . $_POST['message'];
+    $message2 = "Ovo je kopija vaše poruke: " . $first_name . "\n\n" . $_POST['message'];
+
+    $headers = "Od:" . $from;
+    $headers2 = "Od:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2);
+    echo "Poruka poslana. Puno zahvaljujemo " . $first_name . ", kontaktirat ćemo vas u najkraćem mogućem roku.";
+    }
+?>
+
+<!doctype html>
+<html>
+
+	<head>
+		
+		<meta name="viewport" content="width=device-width">
+		<title>PRISM SPECTRUM</title>
+		<link href="css/style.css" rel="stylesheet">
+		<link href="proizvodi.html" rel="stylesheet">
+		<link href="katalog.html" rel="stylesheet">
+		<link href="cjenik.html" rel="stylesheet">
+		<link href="kontakt.html" rel="stylesheet">
+		
+		
+	</head>
+
+	<body>
+	
+		<div id="header">
+			
+			
+			<div id="menu">
+				<img id="logo" src="img/logo01.svg">
+				<a class="menulink" href="index.html">NASLOVNICA</a>						
+				<a class="menulink" href="proizvodi.html">PROIZVODI</a>
+				<a class="menulink" href="katalog.html">KATALOG</a>
+				<a class="menulink" href="cjenik.html">CJENIK</a>
+				<a class="menulink" href="kontakt.html">KONTAKT</a>
+			</div>
+		</div id="header">
+		
+		
+		<div id="main">
+			 
+			<div id="contactform" class="textbox">
+				 
+				 <form action="" method="post">
+					Ime: <input type="text" name="first_name"><br>
+					Prezime: <input type="text" name="last_name"><br>
+					E-mail: <input type="text" name="email"><br>
+					Vaš upit:<br><textarea rows="5" name="message" cols="30"></textarea><br>
+					<input type="submit" name="submit" value="Submit">
+				</form>
+				 
+			</div> 
+			
+		</div>
+				
+		
+		<div id="footer">
+			PRISM SPECTRUM Computers | Seminarski rad za POU Algebra-Web dizajn | Lipanj, 2020.
+		</div id="footer">
+	
+	</body>
+
+</html>
